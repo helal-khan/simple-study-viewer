@@ -1,22 +1,23 @@
 package com.studyviewer.model;
 
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @EntityListeners(AuditingEntityListener.class)
 public class Patient {
 
@@ -25,33 +26,33 @@ public class Patient {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 30)
-    @NotNull
+    @NotBlank(message = "Person code required.")
+    @Size(min = 2, max = 30)
     private String personCode;
 
     @Column(nullable = false, length = 50)
-    @NotNull
+    @NotBlank(message = "First Name required.")
+    @Size(min = 2, max = 50)
     private String firstName;
 
     @Column(nullable = false, length = 50)
-    @NotNull
+    @NotBlank(message = "Last Name required.")
+    @Size(min = 2, max = 50)
     private String lastName;
 
     @Column(nullable = false)
-    @NotNull
     @Temporal(TemporalType.DATE)
+    @NotNull(message = "Date of birth required.")
     private Date dob;
 
-    @Column(nullable = false, updatable = false, insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
-    @Column(nullable = false, insertable = false)
+    @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
-
-    @OneToOne(mappedBy = "patient")
-    private Study study;
 }
 
