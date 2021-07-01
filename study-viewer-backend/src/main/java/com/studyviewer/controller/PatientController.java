@@ -20,7 +20,12 @@ public class PatientController {
 
     @GetMapping
     public List<Patient> getAllPatients(){
-        return patientRepository.findAll();
+        return patientRepository.findByOrderByCreatedAtDesc();
+    }
+
+    @GetMapping("/id-not-in-study")
+    public List<Patient> getAllPatientsIdNotInStudy(){
+        return patientRepository.findByIdNotIn();
     }
 
     @GetMapping("/{id}")
@@ -32,6 +37,7 @@ public class PatientController {
 
     @PostMapping
     public Patient createPatient(@Valid @RequestBody Patient patient) {
+        patient.setPersonCode(this.generatedPatientCode());
         return patientRepository.save(patient);
     }
 
@@ -51,6 +57,11 @@ public class PatientController {
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with id :" + patientId));
         patientRepository.delete(existingPatient);
         return ResponseEntity.ok().build();
+    }
+
+    private String generatedPatientCode(){
+        String id = patientRepository.findLast();
+        return "p"+((Integer.parseInt(id.substring(1, id.length())))+1);
     }
 
 }
