@@ -17,3 +17,9 @@
   [data-theme="dark"] .site-layout-content {
     background: #141414;
   }
+
+  
+  .text-justtify {
+    text-align: justify;
+    text-justify: inter-word;
+  }

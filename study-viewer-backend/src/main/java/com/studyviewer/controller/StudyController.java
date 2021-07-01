@@ -20,7 +20,7 @@ public class StudyController {
 
     @GetMapping
     public List<Study> getAllStudies(){
-        return studyRepository.findAll();
+        return studyRepository.findByOrderByCreatedAtDesc();
     }
 
     @GetMapping("/{id}")
@@ -41,6 +41,7 @@ public class StudyController {
                 .orElseThrow(() -> new ResourceNotFoundException("Study not found with id :" + studyId));
         existingStudy.setName(study.getName());
         existingStudy.setDescription(study.getDescription());
+        existingStudy.setPatient(study.getPatient());
         return this.studyRepository.save(existingStudy);
     }
 

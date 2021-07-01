@@ -1,27 +1,28 @@
 import axios from 'axios';
+import app from '../Util/Utility';
 
-const STUDY_API_BASE_URL = "http://localhost:8080/api/v1/study";
+const STUDY_API_BASE_URL = `${app.apiBaseUrl}/study`;
 
 class StudyService {
 
-    getEmployees(){
+    getStudies(){
         return axios.get(STUDY_API_BASE_URL);
     }
 
-    createEmployee(employee){
-        return axios.post(STUDY_API_BASE_URL, employee);
+    createStudy(study){
+        return axios.post(STUDY_API_BASE_URL, study);
     }
 
-    getEmployeeById(employeeId){
-        return axios.get(STUDY_API_BASE_URL + '/' + employeeId);
+    getStudyById(studyId){
+        return axios.get(`${STUDY_API_BASE_URL}/${studyId}`);
     }
 
-    updateEmployee(employee, employeeId){
-        return axios.put(STUDY_API_BASE_URL + '/' + employeeId, employee);
+    updateStudy(study, studyId){
+        return axios.put(`${STUDY_API_BASE_URL}/${studyId}`, study);
     }
 
-    deleteEmployee(employeeId){
-        return axios.delete(STUDY_API_BASE_URL + '/' + employeeId);
+    deleteStudy(studyId){
+        return axios.delete(`${STUDY_API_BASE_URL}/${studyId}`);
     }
 }
 
