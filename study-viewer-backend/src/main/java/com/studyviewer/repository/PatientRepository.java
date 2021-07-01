@@ -16,4 +16,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     @Query(nativeQuery =true, value = "SELECT person_code FROM patient order by created_at desc limit 1")
     String findLast();
+
+    @Query(nativeQuery =true, value = "SELECT id FROM patient order by created_at desc limit 1")
+    String findLastId();
 }

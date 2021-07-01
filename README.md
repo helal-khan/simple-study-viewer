@@ -20,6 +20,10 @@ Or Run This Project in any editor with normal process. (Intellij idea recommende
 ## Build SpringBoot 
 ```gradle build```
 
+## Test SpringBoot 
+*Temporarily add ```@NoArgsConstructor``` in both controller class, when you will run all test cases.
+If testing is finished then remove ```@NoArgsConstructor``` from controller both class.
+
 ## React Frontend - Open another Terminal
 ```cd study-viewer-frontend```
 

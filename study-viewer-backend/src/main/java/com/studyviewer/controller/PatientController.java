@@ -3,10 +3,14 @@ package com.studyviewer.controller;
 import com.studyviewer.exception.ResourceNotFoundException;
 import com.studyviewer.model.Patient;
 import com.studyviewer.repository.PatientRepository;
+import com.studyviewer.repository.StudyRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -59,9 +63,13 @@ public class PatientController {
         return ResponseEntity.ok().build();
     }
 
-    private String generatedPatientCode(){
+    public String generatedPatientCode(){
         String id = patientRepository.findLast();
         return "p"+((Integer.parseInt(id.substring(1, id.length())))+1);
+    }
+
+    public Long generatedPatientId(){
+        return Long.parseLong(patientRepository.findLastId());
     }
 
 }
