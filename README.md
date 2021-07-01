@@ -39,10 +39,10 @@ http://localhost:8080/swagger-ui.html
 http://localhost:3000
 
 ## Demo 
-![img1]()
-![img1]()
-![img1]()
-![img1]()
-![img1]()
-![img1]()
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/1.png)
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/2.png)
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/3.png)
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/4.png)
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/5.png)
+![img](https://raw.githubusercontent.com/helal-khan/simple-study-viewer/main/screenshots/6.png)
 
