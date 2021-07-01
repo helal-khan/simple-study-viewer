@@ -26,6 +26,8 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.hibernate.validator:hibernate-validator:6.1.2.Final'
 	implementation 'org.springframework.boot:spring-boot-devtools:2.1.8.RELEASE'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.0.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

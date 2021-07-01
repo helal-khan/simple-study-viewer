@@ -1,6 +1,5 @@
 package com.studyviewer.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -27,7 +27,7 @@ public class Study {
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank(message = "Study name required.")
+    @NotEmpty(message = "Study name required.")
     private String name;
 
     @Column(columnDefinition = "TEXT", length = 200)
@@ -46,6 +46,6 @@ public class Study {
 
     @OneToOne
     @JoinColumn(name = "patient_id", referencedColumnName = "id",  nullable = false)
-    @NotBlank(message = "Patient required.")
+    @NotNull(message = "Patient required.")
     private Patient patient;
 }

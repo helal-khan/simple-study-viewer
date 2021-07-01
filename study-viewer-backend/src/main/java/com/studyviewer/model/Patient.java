@@ -26,18 +26,17 @@ public class Patient {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 30)
-    @NotBlank(message = "Person code required.")
-    @Size(min = 2, max = 30)
+    @Size(max = 30)
     private String personCode;
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "First Name required.")
-    @Size(min = 2, max = 50)
+    @Size(max = 50)
     private String firstName;
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "Last Name required.")
-    @Size(min = 2, max = 50)
+    @Size(max = 50)
     private String lastName;
 
     @Column(nullable = false)
